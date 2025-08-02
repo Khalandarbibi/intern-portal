@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Intern Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+    }
+
+    .dashboard {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .dashboard h1 {
+      text-align: center;
+      color: #003135;
+      margin-bottom: 2rem;
+    }
+
+    #info {
+      background: #e6f2f3;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .rewards {
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      background-color: #f9f9f9;
+      border-left: 5px solid #003135;
+      border-radius: 8px;
+    }
+
+    .rewards h3 {
+      margin-bottom: 0.5rem;
+      color: #003135;
+    }
+
+    .rewards ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .rewards ul li {
+      padding: 0.5rem 0;
+      font-weight: 500;
+    }
+
+    .rewards ul li:nth-child(3) {
+      color: #888;
+    }
+
+    .leaderboard-btn, .back-btn {
+      margin-top: 1.5rem;
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #003135;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+
+    .leaderboard-btn:hover,
+    .back-btn:hover {
+      background-color: #00585f;
+    }
+
+    @media (max-width: 600px) {
+      .dashboard {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .leaderboard-btn, .back-btn {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Intern Dashboard</h1>
+
+    <div id="info">
+      <p><strong>Name:</strong> <span id="internName">Loading...</span></p>
+      <p><strong>Referral Code:</strong> <span id="referralCode">---</span></p>
+      <p><strong>Total Donations Raised:</strong> ₹<span id="donationAmount">0</span></p>
+    </div>
+
+    <div class="rewards">
+      <h3>Rewards & Unlockables</h3>
+      <ul>
+        <li>Bronze Badge – Unlocked</li>
+        <li>Silver Badge – Unlocked</li>
+        <li>Gold Badge – Locked</li>
+      </ul>
+    </div>
+
+    <button class="leaderboard-btn" onclick="window.location.href='leaderboard.html'">View Leaderboard</button>
+    <button class="back-btn" onclick="window.location.href='index.html'">← Back to Home</button>
+  </div>
+
+  <script>
+    // Load dummy user data
+    const internName = localStorage.getItem("internName") || "Anonymous Intern";
+    document.getElementById("internName").textContent = internName;
+    document.getElementById("referralCode").textContent = internName.replace(/\s+/g, "").toLowerCase() + "2025";
+    document.getElementById("donationAmount").textContent = (Math.random() * 5000 + 500).toFixed(2); // Mocked ₹ value
+  </script>
+</body>
+</html>

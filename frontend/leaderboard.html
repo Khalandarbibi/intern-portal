@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+    }
+
+    .leaderboard {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .leaderboard h1 {
+      text-align: center;
+      color: #003135;
+      margin-bottom: 2rem;
+    }
+
+    #leaderboard-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #leaderboard-list li {
+      background: #e6f2f3;
+      margin: 0.5rem 0;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .back-btn {
+      margin-top: 2rem;
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #003135;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #00585f;
+    }
+
+    @media (max-width: 600px) {
+      .leaderboard {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      #leaderboard-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="leaderboard">
+    <h1>Top Fundraisers</h1>
+    <ul id="leaderboard-list"></ul>
+    <button class="back-btn" onclick="window.location.href='dashboard.html'">← Back to Dashboard</button>
+  </div>
+
+  <script>
+    const leaderboardData = [
+      { name: "Ananya Mehra", amount: 9420 },
+      { name: "Ritik Sharma", amount: 8390 },
+      { name: "Divya Gupta", amount: 7150 },
+      { name: "Yash Patel", amount: 6230 },
+      { name: "Sneha Rao", amount: 5890 },
+    ];
+
+    const internName = localStorage.getItem("internName");
+
+    if (internName) {
+      const exists = leaderboardData.find(entry => entry.name === internName);
+      if (!exists) {
+        const randomAmount = Math.floor(Math.random() * 3000 + 2000); // ₹2000–₹5000
+        leaderboardData.push({ name: internName, amount: randomAmount });
+      }
+    }
+
+    // Sort by donation descending
+    leaderboardData.sort((a, b) => b.amount - a.amount);
+
+    const list = document.getElementById("leaderboard-list");
+    leaderboardData.forEach((entry, index) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span>${index + 1} ${entry.name}</span><span>₹${entry.amount.toLocaleString()}</span>`;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
