@@ -30,7 +30,7 @@ A clean and modern full-stack intern dashboard built for **Round 1** of the Fund
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 **Frontend:**
 - HTML5 + CSS3 (Custom responsive design)
@@ -42,5 +42,12 @@ A clean and modern full-stack intern dashboard built for **Round 1** of the Fund
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
+intern-portal/
+│
+├── index.html           # Home Page
+├── login.html           # Dummy Login Page
+├── dashboard.html       # Intern Dashboard
+├── leaderboard.html     # Leaderboard Page
+└── README.md            # Project Info
 
